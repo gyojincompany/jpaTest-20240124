@@ -33,6 +33,11 @@ public class JpaController {
 		return "memberjoin";
 	}
 	
+	@RequestMapping("/memberdel")
+	public String memberdel() {
+		return "memberdel";
+	}
+	
 	@RequestMapping("/join")
 	public String join(HttpServletRequest request) {
 		
@@ -52,5 +57,14 @@ public class JpaController {
 		return "redirect:memberlist";
 	}
 	
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request) {
+		
+		Long mid = Long.parseLong(request.getParameter("membernum"));
+		
+		memberRepository.deleteById(mid);
+		
+		return "redirect:memberlist";
+	}
 
 }
